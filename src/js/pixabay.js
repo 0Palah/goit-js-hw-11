@@ -31,16 +31,4 @@ export class PixabayApi {
       params: searchParams,
     });
   }
-
-  //   fetchRandomPhotos() {
-  //     const searchParams = {
-  //       orientation: 'portrait',
-  //       count: 12,
-  //       client_id: this.#API_KEY,
-  //     };
-
-  //     return axios.get(`${this.#BASE_URL}/photos/random`, {
-  //       params: searchParams,
-  //     });
-  //   }
 }
