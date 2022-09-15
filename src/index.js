@@ -48,6 +48,9 @@ const onLoadMoreBtnElClick = evt => {
 const onsearchFormElSubmit = evt => {
   evt.preventDefault();
 
+  loadMoreEl.classList.add('is-hidden');
+  loadMoreEl.removeEventListener('click', onLoadMoreBtnElClick);
+
   // записуємо searchQuery в екземпляр
   pixabayApi.searchQuery = evt.target.elements.searchQuery.value;
 

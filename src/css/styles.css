@@ -12,6 +12,17 @@ body {
   line-height: 1.5;
 }
 
+img {
+  width: 100%;
+
+  max-width: unset;
+  object-fit: cover;
+}
+
+.container {
+  width: 1200px;
+}
+
 #search-box {
   font: inherit;
   padding: 8px;
@@ -39,4 +50,14 @@ body {
 
 .load-more.is-hidden {
   display: none;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.photo-card {
+  flex-basis: calc((100% - 90px) / 4);
 }
