@@ -35,6 +35,9 @@ const onLoadMoreBtnElClick = evt => {
       if (pixabayApi.page >= data.totalHits / pixabayApi.per_page) {
         loadMoreEl.classList.add('is-hidden');
         loadMoreEl.removeEventListener('click', onLoadMoreBtnElClick);
+        Notiflix.Notify.failure(
+          "We're sorry, but you've reached the end of search results."
+        );
       }
       // додаємо до відмальованих картки через хенделбарс
       galleryListEl.insertAdjacentHTML('beforeend', galleryCard(data.hits));
@@ -64,11 +67,15 @@ const onsearchFormElSubmit = evt => {
       // деструктуризую дані з response
       const { data } = response;
       console.log(response);
-      if (pixabayApi.page === 0) {
+      if (data.totalHits === 0) {
+        Notiflix.Notify.failure(
+          'Sorry, there are no images matching your search query. Please try again.'
+        );
         return;
       }
       if (pixabayApi.page >= data.totalHits / pixabayApi.per_page) {
         // Якщо ТІЛЬКИ одна сторінка то тільки відмальовуємо, (is-hidden не знімаємо)
+        Notiflix.Notify.success(`Hooray! We found ${data.totalHits} images.`);
         return (galleryListEl.innerHTML = galleryCard(data.hits));
       }
       // відмальовую картки через хенделбарс
@@ -77,6 +84,8 @@ const onsearchFormElSubmit = evt => {
       loadMoreEl.classList.remove('is-hidden');
       // прослуховування на кнопку load-more
       loadMoreEl.addEventListener('click', onLoadMoreBtnElClick);
+
+      Notiflix.Notify.success(`Hooray! We found ${data.totalHits} images.`);
     })
     .catch(err => {
       console.log(err);
