@@ -30,10 +30,10 @@ const onLoadMoreBtnElClick = async evt => {
         data.totalHits / pixabayApi.per_page
       }`
     );
-    if (pixabayApi.page >= data.totalHits / pixabayApi.per_page) {
+    if (pixabayApi.page >= data.totalHits / pixabayApi.per_page + 1) {
       loadMoreEl.classList.add('is-hidden');
       loadMoreEl.removeEventListener('click', onLoadMoreBtnElClick);
-      Notiflix.Notify.failure(
+      Notiflix.Notify.info(
         "We're sorry, but you've reached the end of search results."
       );
     }
