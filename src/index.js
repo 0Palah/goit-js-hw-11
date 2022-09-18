@@ -3,8 +3,6 @@ import { PixabayApi } from './js/pixabay';
 import Notiflix from 'notiflix';
 import galleryCard from './templates/gallery-card.hbs';
 
-// const DEBOUNCE_DELAY = 300;
-
 const searchFormEl = document.querySelector('#search-form');
 const searchQueryEl = searchFormEl.querySelector('input[name="searchQuery"]');
 const btnSubmitEl = searchFormEl.querySelector('button');
